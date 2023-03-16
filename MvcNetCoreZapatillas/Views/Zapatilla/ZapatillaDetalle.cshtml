@@ -1,0 +1,55 @@
+﻿@model MvcNetCoreZapatillas.Models.Zapatilla
+
+@{
+    ViewData["Title"] = "ZapatillaDetalle";
+}
+
+<h1 style="margin: auto;">
+    Detalles
+</h1>
+
+<div>
+    <h3>@Html.DisplayNameFor(model => model.Nombre)</h3>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+
+<div id="contenido"></div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var request = "/Zapatilla/_DetailsZapatilla?idproducto=" + @Model.IdProducto;
+            $("#contenido").load(request);
+        });
+
+        function paginar(posicion) {
+            var request = "/Zapatilla/_DetailsZapatilla?idproducto=" + @Model.IdProducto;
+            $("#contenido").load(request + "&posicion=" + posicion);
+        }
+    </script>
+}
+
+
+<div>
+    <a asp-controller="Zapatilla" asp-action="GetZapatillas">Back to List</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@model ImagenZapatilla
+
+@{
+    int ultimo = (ViewData["ULTIMO"] != null) ? (int)ViewData["ULTIMO"] : 0;
+    int siguiente = (ViewData["SIGUIENTE"] != null) ? (int)ViewData["SIGUIENTE"] : 0;
+    int anterior = (ViewData["ANTERIOR"] != null) ? (int)ViewData["ANTERIOR"] : 0;
+}
+
+<div>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <button id="primero" onclick="paginar(1)">
+                Primero
+            </button>
+        </li>
+        <li class="list-group-item">
+            <button id="anterior" onclick="paginar(@anterior)">
+                Anterior
+            </button>
+        </li>
+        <li class="list-group-item">
+            <button id="siguiente" onclick="paginar(@siguiente)">
+                Siguiente
+            </button>
+        </li>
+        <li class="list-group-item" onclick="paginar(@anterior)">
+            <button id="ultimo">
+                Último
+            </button>
+        </li>
+    </ul>
+</div>
+<hr />
+
+<img src="@Model.Imagen" width="400" height="200">

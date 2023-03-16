@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcNetCoreZapatillas.Models.Zapatilla>
+
+@{
+    ViewData["Title"] = "GetZapatillas";
+}
+
+<h1>Listado de zapatillas</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <h1 style="color: darkslategrey;">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </h1>
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "ZapatillaDetalle", new { idproducto = item.IdProducto })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
